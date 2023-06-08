@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Library Management System</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+    body {
+      background-image: url("https://images.pexels.com/videos/854417/free-video-854417.jpg");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .login-box {
+      width: 400px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.415);
+      text-align: center;
+      backdrop-filter: blur(0px);
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      animation: animateText 2s infinite;
+    }
+
+    @keyframes animateText {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 93%;
+      padding: 8px;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .form-submit {
+      text-align: center;
+    }
+    .green-button{
+      display:inline-block;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: rgb(11, 242, 11);
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }  
+    .green-button:hover{
+      background-color: darkgreen;
+    }
+    .success-message {
+      font-size: 18px;
+      margin-top: 20px;
+      color: rgb(243, 247, 247);
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-box">
+    <h1>Library<span class="animated-text"> Management System</span></h1>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="contain">
+        <button class="green-button" id="loginButton" disabled>Login</button>
+      </div>
+    </form>
+    <div id="success-message" class="success-message"></div>
+  </div>
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const successMessage = document.getElementById('success-message');
+    const loginButton = document.getElementById('loginButton');
+
+    loginForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      if (password === '12345') {
+        successMessage.textContent = 'Login successful!';
+        successMessage.style.color = 'green';
+        window.location.href = 'bgm80.html'; // Redirect to the next page
+      } else {
+        successMessage.textContent = 'Invalid password. Please try again.';
+        successMessage.style.color = 'white';
+      }
+      
+    });
+
+    document.getElementById('password').addEventListener('input', function () {
+      const password = this.value;
+      loginButton.disabled = password !== '12345'
+      
+    });
+  </script>
+</body>
+
+</html>

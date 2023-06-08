@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Books</title>
+  <style>
+    body {
+      background-image: url('https://e0.pxfuel.com/wallpapers/561/955/desktop-wallpaper-light-blue-faded-painted-118723-light-blue-texture.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .book-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    
+    .book {
+      width: 200px;
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.429);
+      border-radius: 5px;
+      padding: 10px;
+    }
+    
+    .book-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .book-details {
+      text-align: center;
+    }
+  </style>
+  <script>
+    function addBook() {
+      var bookContainer = document.getElementById("bookContainer");
+      
+      var bookDiv = document.createElement("div");
+      bookDiv.classList.add("book");
+      
+      var image = document.createElement("img");
+      image.src = document.getElementById("image").value;
+      image.alt = "Book Image";
+      image.classList.add("book-image");
+      bookDiv.appendChild(image);
+      
+      var title = document.createElement("h3");
+      title.textContent = document.getElementById("title").value;
+      bookDiv.appendChild(title);
+      
+      var author = document.createElement("p");
+      author.textContent = "Author: " + document.getElementById("author").value;
+      bookDiv.appendChild(author);
+      
+      var date = document.createElement("p");
+      date.textContent = "Publication Date: " + document.getElementById("date").value;
+      bookDiv.appendChild(date);
+      
+      var deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.onclick = function() {
+        bookContainer.removeChild(bookDiv);
+      };
+      bookDiv.appendChild(deleteButton);
+      
+      bookContainer.appendChild(bookDiv);
+      
+      document.getElementById("title").value = "";
+      document.getElementById("author").value = "";
+      document.getElementById("date").value = "";
+      document.getElementById("image").value = "";
+    }
+  </script>
+</head>
+<body>
+  <h1>LIBRARY BOOKS DATA</h1>
+  
+  <div id="bookContainer" class="book-container">
+    <div class="book">
+      <img class="book-image" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg" alt="Book Image">
+      <h3>The Great Gatsby</h3>
+      <p>Author: F. Scott Fitzgerald</p>
+      <p>Publication Date: 1925</p>
+      <button onclick="this.parentNode.parentNode.removeChild(this.parentNode)">Delete</button>
+    </div>
+    <div class="book">
+      <img class="book-image" src="https://m.media-amazon.com/images/I/91s48sH6xqL._AC_UF1000,1000_QL80_.jpg" alt="Book Image">
+      <h3>Ponniyin Selvan</h3>
+      <p>Author: Kalki</p>
+      <p>Publication Date: 1954</p>
+      <button onclick="this.parentNode.parentNode.removeChild(this.parentNode)">Delete</button>
+    </div>
+    <div class="book">
+      <img class="book-image" src="https://upload.wikimedia.org/wikipedia/en/3/3a/Wings_of_Fire_by_A_P_J_Abdul_Kalam_Book_Cover.jpg" alt="Book Image">
+      <h3>Wings of Fire</h3>
+      <p>Author: Dr.A.P.J.Abdul Kalam</p>
+      <p>Publication Date: 1999</p>
+      <button onclick="this.parentNode.parentNode.removeChild(this.parentNode)">Delete</button>
+    </div>
+    <div class="book">
+      <img class="book-image" src="https://m.media-amazon.com/images/I/51HTieS6nkL.jpg" alt="Book Image">
+      <h3>C Programming: Language</h3>
+      <p>Author: Darrel L.Graham</p>
+      <p>Publication Date: 2017</p>
+      <button onclick="this.parentNode.parentNode.removeChild(this.parentNode)">Delete</button>
+    </div>
+  </div>
+  
+  <h2>Add a Book</h2>
+  <label for="title">Title:</label>
+  <input type="text" id="title">
+  <label for="author">Author:</label>
+  <input type="text" id="author">
+  <label for="date">Publication Date:</label>
+  <input type="text" id="date">
+  <label for="image">Image URL:</label>
+  <input type="text" id="image">
+  <button onclick="addBook()">Add</button>
+</body>
+</html>
+

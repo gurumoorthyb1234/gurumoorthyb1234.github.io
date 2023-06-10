@@ -74,6 +74,20 @@
       document.getElementById("date").value = "";
       document.getElementById("image").value = "";
     }
+    
+    function filterBooks() {
+      var searchInput = document.getElementById("search").value.toLowerCase();
+      var books = document.getElementsByClassName("book");
+
+      for (var i = 0; i < books.length; i++) {
+        var bookTitle = books[i].getElementsByTagName("h3")[0].textContent.toLowerCase();
+        if (bookTitle.includes(searchInput)) {
+          books[i].style.display = "block";
+        } else {
+          books[i].style.display = "none";
+        }
+      }
+    }
   </script>
 </head>
 <body>
@@ -88,10 +102,10 @@
       <button onclick="this.parentNode.parentNode.removeChild(this.parentNode)">Delete</button>
     </div>
     <div class="book">
-      <img class="book-image" src="https://m.media-amazon.com/images/I/91s48sH6xqL._AC_UF1000,1000_QL80_.jpg" alt="Book Image">
-      <h3>Ponniyin Selvan</h3>
-      <p>Author: Kalki</p>
-      <p>Publication Date: 1954</p>
+      <img class="book-image" src="https://books.google.co.in/books/content?id=_14H7MOw1o4C&pg=PP1&img=1&zoom=3&hl=en&sig=ACfU3U0K8yV6bcnVtGKwPTGtAM_ik1uB0w&w=1280">
+      <h3>Principles of Biomedical Ethics</h3>
+      <p>Author:Tom L. Beauchamp</p>
+      <p>Publication Date:2001</p>
       <button onclick="this.parentNode.parentNode.removeChild(this.parentNode)">Delete</button>
     </div>
     <div class="book">
@@ -120,6 +134,10 @@
   <label for="image">Image URL:</label>
   <input type="text" id="image">
   <button onclick="addBook()">Add</button>
+  
+  <h2>Filter Books</h2>
+  <label for="search">Search:</label>
+  <input type="text" id="search">
+  <button onclick="filterBooks()">Search</button>
 </body>
 </html>
-

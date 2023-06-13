@@ -88,6 +88,28 @@
         }
       }
     }
+    function filterBooks() {
+      var searchTitle = document.getElementById("search-title").value.toLowerCase();
+      var searchYear = document.getElementById("search-year").value.toLowerCase();
+      var searchAuthor = document.getElementById("search-author").value.toLowerCase();
+      var books = document.getElementsByClassName("book");
+
+      for (var i = 0; i < books.length; i++) {
+        var bookTitle = books[i].getElementsByTagName("h3")[0].textContent.toLowerCase();
+        var bookYear = books[i].getElementsByTagName("p")[1].textContent.toLowerCase();
+        var bookAuthor = books[i].getElementsByTagName("p")[0].textContent.toLowerCase();
+        
+        var titleMatch = bookTitle.includes(searchTitle);
+        var yearMatch = bookYear.includes(searchYear);
+        var authorMatch = bookAuthor.includes(searchAuthor);
+        
+        if (titleMatch && yearMatch && authorMatch) {
+          books[i].style.display = "block";
+        } else {
+          books[i].style.display = "none";
+        }
+      }
+    }  
   </script>
 </head>
 <body>
@@ -170,9 +192,13 @@
   <input type="text" id="image">
   <button onclick="addBook()">Add</button>
   
-  <h2>Filter Books</h2>
-  <label for="search">Search:</label>
-  <input type="text" id="search">
-  <button onclick="filterBooks()">Search</button>
+  <h2>Filter Books:</h2>
+  <label for="search-title">Title:</label>
+  <input type="text" id="search-title">
+  <label for="search-year">Year:</label>
+  <input type="text" id="search-year">
+  <label for="search-author">Author:</label>
+  <input type="text" id="search-author">
+  <button onclick="filterBooks()">Filter</button>
 </body>
 </html>
